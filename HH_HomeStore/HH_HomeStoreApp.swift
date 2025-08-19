@@ -9,6 +9,7 @@ import SwiftUI
 
 @main
 struct HH_HomeStoreApp: App {
+    @State private var isAuthorized : Bool = false
     var body: some Scene {
         WindowGroup {
             ContentView()
