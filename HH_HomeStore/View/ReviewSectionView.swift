@@ -36,7 +36,7 @@ struct ReviewSectionView: View {
 
             // Кнопка "Смотреть все"
             Button("Смотреть все отзывы") {
-                // Действие: переход к полному списку
+                
             }
             .font(.custom("Lexend", size: 14))
             .foregroundColor(.blue)
@@ -91,7 +91,7 @@ struct ReviewSectionView: View {
             id: "3",
             author: Author(
                 name: "Елена Петрова",
-                avatarUrl: nil // без аватара
+                avatarUrl: nil
             ),
             rating: 5,
             createdAt: Date().addingTimeInterval(-60 * 60 * 24 * 30),

@@ -1,9 +1,8 @@
 import SwiftUI
 
 struct AuthScreenView: View {
-    @State private var email: String = ""
-    @State private var password: String = ""
-    
+    @ObservedObject var vm = AuthViewModel()
+
     var body: some View {
         NavigationStack {
             VStack(spacing: 0) {
@@ -19,15 +18,15 @@ struct AuthScreenView: View {
                         .fontWeight(.bold)
                         .foregroundColor(.black)
                     
-                    InputFields(placeholder: "Логин", text: $email)
-                    PasswordField(placeholder: "Пароль", text: $password)
+                    InputFields(placeholder: "Логин", text: $vm.username, errorMessage: $vm.usernameError)
+                    PasswordField(placeholder: "Пароль", text: $vm.password, errorMessage: $vm.passwordError)
                     
                     StyledButton(title: "Войти") {
-                        // действие входа
+                        vm.login()
                     }
                     
                     NavigationLink {
-                        ForgetPasswordView()
+                        ForgetPasswordView(viewModel: ForgetPasswordViewModel())
                     } label: {
                         Text("Забыли пароль?")
                             .font(.system(size: 14))

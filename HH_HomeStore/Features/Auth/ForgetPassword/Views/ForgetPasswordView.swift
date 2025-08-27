@@ -8,9 +8,14 @@
 import SwiftUI
 
 struct ForgetPasswordView: View {
-    
     @Environment(\.dismiss) private var dismiss
+    @ObservedObject private var viewModel: ForgetPasswordViewModel
     @State private var email: String = ""
+    @State private var errorMessage: String?
+    
+    init(viewModel: ForgetPasswordViewModel){
+        self.viewModel = viewModel
+    }
     
     var body: some View {
         VStack(spacing: 50) {
@@ -18,7 +23,7 @@ struct ForgetPasswordView: View {
                 Button {
                     dismiss()
                 } label: {
-                    Image(systemName: "chevron.left")
+                    Image("back")
                         .font(.system(size: 20, weight: .medium))
                         .foregroundColor(.black)
                         .frame(width: 44, height: 44)
@@ -39,10 +44,10 @@ struct ForgetPasswordView: View {
             .padding(.top, 12)
             
             VStack(spacing: 32) {
-                InputFields(placeholder: "Электронная почта", text: $email)
+                InputFields(placeholder: "Электронная почта", text: $email, errorMessage: $errorMessage)
                 
                 StyledButton(title: "Восстановить пароль") {
-                    // action
+                    viewModel.sendResetEmail()
                 }
             }
             .padding(16)
@@ -56,5 +61,5 @@ struct ForgetPasswordView: View {
 
 
 #Preview {
-    ForgetPasswordView()
+    ForgetPasswordView(viewModel: ForgetPasswordViewModel())
 }

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CartItem: View {
+struct CartItemView: View {
     @State var item: CartItemModel = .init()
     
     var body: some View {
@@ -29,7 +29,6 @@ struct CartItem: View {
             
             Spacer()
             
-            // Блок с количеством
             HStack(alignment: .center, spacing: 8) {
                 Button {
                     if item.count > 1 {
@@ -89,5 +88,5 @@ struct CartItemModel {
 }
 
 #Preview {
-    CartItem()
+    CartItemView()
 }

@@ -20,7 +20,7 @@ struct CartScreenView: View {
             }
             ScrollView(.vertical, showsIndicators: false){
                ForEach(0..<10, id: \.self) { _ in
-                    CartItem()
+                    CartItemView()
                 }
             }.background(Color.white)
                 .padding(.vertical, 8)

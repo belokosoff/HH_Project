@@ -8,23 +8,32 @@
 import SwiftUI
 
 struct CategoryButton: View {
-    var title: String
-    var action: () -> Void
-    
+    let title: String
+    let isSelected: Bool
+    let action: () -> Void
+
     var body: some View {
         Button(action: action) {
             Text(title)
-                .foregroundColor(.black)
-                .padding(.horizontal, 12)
-                .frame(height: 32)
-                .background(Color.gray.opacity(0.2))
-                .cornerRadius(12)
+                .font(.custom("Lexend", size: 16))
+                .padding(.horizontal, 16)
+                .padding(.vertical, 8)
+                .background(
+                    isSelected ?
+                    Color.black : Color.clear
+                )
+                .foregroundColor(isSelected ? .white : .black)
+                .cornerRadius(20)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 20)
+                        .stroke(Color.black, lineWidth: 1)
+                )
         }
     }
 }
 
 #Preview {
-    CategoryButton(title: "Furniture") {
+    CategoryButton(title: "Furniture", isSelected: true) {
         print("Category tapped")
     }
 }

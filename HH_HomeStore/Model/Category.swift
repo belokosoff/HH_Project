@@ -5,8 +5,13 @@
 //  Created by Maxim Belokosov on 18.08.2025.
 //
 
-enum Category: String, Codable {
-    case clothes
-    case shoes
-    case accessories
+enum Category: String, CaseIterable, Codable {
+    case all = "Все"
+    case clothes = "Одежда"
+    case shoes = "Обувь"
+    case accessories = "Аксессуары"
+
+    var displayName: String {
+        return self.rawValue
+    }
 }

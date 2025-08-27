@@ -13,6 +13,13 @@ struct RegisterScreenView: View {
     @State private var email: String = ""
     @State private var password: String = ""
     @State private var confirmPassword: String = ""
+    
+    @State private var nameError: String?
+    @State private var emailError: String?
+    @State private var passwordError: String?
+    @State private var confirmPasswordError: String?
+    
+    
     var body: some View {
         VStack(spacing: 30) {
             HStack {
@@ -28,15 +35,16 @@ struct RegisterScreenView: View {
             }
             
             VStack(spacing: 30) {
-                InputFields(placeholder: "Имя Фамилия", text: $name)
-                InputFields(placeholder: "Электронная почта", text: $email)
-                PasswordField(placeholder: "Пароль", text: $password)
-                PasswordField(placeholder: "Подтвердите пароль", text: $confirmPassword)
+                InputFields(placeholder: "Имя Фамилия", text: $name, errorMessage: $nameError)
+                InputFields(placeholder: "Электронная почта", text: $email, errorMessage: $emailError)
+                PasswordField(placeholder: "Пароль", text: $password, errorMessage: $passwordError)
+                PasswordField(placeholder: "Подтвердите пароль", text: $confirmPassword, errorMessage: $confirmPasswordError)
             }
             
             Spacer()
             
             StyledButton(title: "Зарегистрироваться") {
+                
             }
         }
         .padding(16)
