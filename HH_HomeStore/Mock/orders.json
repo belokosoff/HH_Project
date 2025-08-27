@@ -1,0 +1,26 @@
+[
+  {
+    "orderId": "order-1",
+    "number": 123456,
+    "status": "processing",
+    "createdAt": "2025-08-27T17:32:51.097Z",
+    "totalAmount": 150,
+    "currency": "₽",
+    "itemsPreview": [
+      { "productId": "p1", "thumbUrl": "https://via.placeholder.com/60x60/FFCC00/000000?text=1" },
+      { "productId": "p2", "thumbUrl": "https://via.placeholder.com/60x60/FF6B6B/FFFFFF?text=2" },
+      { "productId": "p3", "thumbUrl": "https://via.placeholder.com/60x60/4ECDC4/FFFFFF?text=3" }
+    ]
+  },
+  {
+    "orderId": "order-2",
+    "number": 123457,
+    "status": "shipped",
+    "createdAt": "2025-08-20T10:00:00Z",
+    "totalAmount": 2990,
+    "currency": "₽",
+    "itemsPreview": [
+      { "productId": "p4", "thumbUrl": "https://via.placeholder.com/60x60/45B7D1/FFFFFF?text=4" }
+    ]
+  }
+]

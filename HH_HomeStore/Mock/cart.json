@@ -1,0 +1,33 @@
+{
+  "items": [
+    {
+      "itemId": "item-1",
+      "productId": "prod-100",
+      "title": "Шелковая блузка",
+      "variant": {
+        "size": "S",
+        "color": "Белый"
+      },
+      "price": 7280,
+      "currency": "RUB",
+      "quantity": 1,
+      "imageUrl": "https://via.placeholder.com/100"
+    },
+    {
+      "itemId": "item-2",
+      "productId": "prod-200",
+      "title": "Джинсы",
+      "variant": {
+        "size": "M",
+        "color": "Синий"
+      },
+      "price": 5990,
+      "currency": "RUB",
+      "quantity": 2,
+      "imageUrl": "https://via.placeholder.com/100"
+    }
+  ],
+  "totalItems": 3,
+  "subtotal": 19260,
+  "currency": "RUB"
+}

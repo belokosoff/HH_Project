@@ -9,22 +9,29 @@ import SwiftUI
 
 struct OrdersScreenView: View {
     @Environment(\.dismiss) var dismiss
-
+    @ObservedObject var vm: OrdersViewModel
+    
+    init(vm: OrdersViewModel){
+        self.vm = vm
+    }
+    
     var body: some View {
         NavigationStack {
             ScrollView {
-                VStack(alignment: .leading, spacing: 0) {
-                    ForEach(0..<4) { _ in
-                        OrderItem(
-                            orderNumber: "#123456",
-                            amount: "150 ₽",
-                            status: "В процессе",
-                            date: "15 мая 2024 г.",
-                            productImages: ["watch1", "watch2", "watch3"]
-                        )
+                if vm.isLoading {
+                    ProgressView("Загрузка заказов...")
+                        .frame(maxWidth: .infinity, alignment: .center)
+                        .padding()
+                } else if vm.orders.first != nil {
+                    ForEach(vm.orders) { order in
+                        OrderItem(order: order)
                     }
+                } else {
+                    Text("Заказы не найдены")
+                        .foregroundColor(.gray)
+                        .frame(maxWidth: .infinity)
+                        .padding()
                 }
-                .padding(.horizontal, 16)
             }
             .navigationTitle("Мои заказы")
             .navigationBarTitleDisplayMode(.inline)
@@ -32,12 +39,12 @@ struct OrdersScreenView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button(action: { dismiss() }) {
-                        Image(systemName: "chevron.left")
+                        Image("back")
                             .font(.system(size: 20, weight: .medium))
                             .foregroundColor(.black)
                     }
                     .frame(width: 44, height: 44)
-                    .padding(.leading, 8) // ← отступ слева
+                    .padding(.leading, 8)
                 }
             }
             .padding(.top)
@@ -46,5 +53,5 @@ struct OrdersScreenView: View {
 }
 
 #Preview {
-    OrdersScreenView()
+    OrdersScreenView(vm: OrdersViewModel())
 }

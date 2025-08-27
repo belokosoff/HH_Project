@@ -1,0 +1,15 @@
+{
+  "id": "user-123",
+  "name": "Елена Ковальчук",
+  "email": "eelena.kovalchuk@example.com",
+  "avatarUrl": "https://via.placeholder.com/128",
+  "phone": "+7 (916) 123-45-67",
+  "address": {
+    "city": "Москва",
+    "street": "ул. Тверская, д. 10",
+    "postcode": "123456",
+    "country": "RU"
+  },
+  "birthDate": "1990-01-01T00:00:00Z",
+  "createdAt": "2025-08-17T10:00:00Z"
+}

@@ -13,7 +13,7 @@ struct CategorySlide: View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack {
                 ForEach(category, id:\.self) { category in
-                    CategoryButton(title:"\(category)") {
+                    CategoryButton(title:"\(category)", isSelected: true) {
                         print("1")
                     }
                 }
