@@ -8,32 +8,41 @@
 import SwiftUI
 
 struct CartItemView: View {
-    @State var item: CartItemModel = .init()
+    let item: CartItem
+    @ObservedObject private var viewModel: CartViewModel
+
+    // Fixed: Include both parameters
+    init(item: CartItem, viewModel: CartViewModel) {
+        self.item = item
+        self.viewModel = viewModel
+    }
     
     var body: some View {
         HStack(spacing: 12) {
-            Image(item.image)
-                .resizable()
-                .scaledToFill()
-                .frame(width: 56, height: 56)
-                .clipShape(RoundedRectangle(cornerRadius: 8))
-            
+            AsyncImage(url: item.imageUrl) { image in
+                image.resizable()
+            } placeholder: {
+                Color.gray.opacity(0.3)
+            }
+            .scaledToFill()
+            .frame(width: 56, height: 56)
+            .clipShape(RoundedRectangle(cornerRadius: 8))
+
             VStack(alignment: .leading, spacing: 4) {
-                Text(item.name)
+                Text(item.title)
                     .font(.system(size: 16, weight: .semibold))
-                
-                Text("Цена: \(item.price.formatted(.currency(code: "RUB"))), Размер: \(item.size)")
+
+                let options = item.variant.map { "\($0): \($1)" }.joined(separator: ", ")
+                Text("Цена: \(item.price.formatted(.currency(code: "RUB"))), \(options)")
                     .font(.system(size: 14))
                     .foregroundColor(.gray)
             }
-            
+
             Spacer()
-            
+
             HStack(alignment: .center, spacing: 8) {
                 Button {
-                    if item.count > 1 {
-                        item.count -= 1
-                    }
+                    viewModel.updateQuantity(for: item.id, newQuantity: item.quantity - 1)
                 } label: {
                     ZStack {
                         Circle()
@@ -44,13 +53,14 @@ struct CartItemView: View {
                             .foregroundColor(.black)
                     }
                 }
-                
-                Text("\(item.count)")
+                .disabled(item.quantity <= 1)
+
+                Text("\(item.quantity)")
                     .font(.system(size: 16, weight: .medium))
                     .frame(width: 28)
-                
+
                 Button {
-                    item.count += 1
+                    viewModel.updateQuantity(for: item.id, newQuantity: item.quantity + 1)
                 } label: {
                     ZStack {
                         Circle()
@@ -66,27 +76,19 @@ struct CartItemView: View {
     }
 }
 
-struct CartItemModel {
-    let image: String
-    let name: String
-    let price: Int
-    let size: String
-    var count: Int
-    
-    init(image: String = "hand",
-         name: String = "Шелковая блузка",
-         price: Int = 7280,
-         size: String = "S",
-         count: Int = 1
-    ) {
-        self.image = image
-        self.name = name
-        self.price = price
-        self.size = size
-        self.count = count
-    }
-}
-
+// MARK: - Preview
 #Preview {
-    CartItemView()
+    CartItemView(
+        item: CartItem(
+            id: "item-1",
+            productId: "p1",
+            title: "Шелковая блузка",
+            variant: ["size": "S", "color": "Белый"],
+            price: 7280,
+            currency: "RUB",
+            quantity: 1,
+            imageUrl: URL(string: "https://via.placeholder.com/56x56")
+        ),
+        viewModel: CartViewModel()
+    )
 }

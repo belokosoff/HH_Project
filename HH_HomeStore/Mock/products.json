@@ -1,0 +1,38 @@
+[
+  {
+    "id": "prod_001",
+    "title": "Лёгкая летняя куртка",
+    "category": "clothes",
+    "rating": 4.7,
+    "reviewsCount": 124,
+    "color": "Синий",
+    "material": "Нейлон",
+    "price": 5990.0,
+    "currency": "RUB",
+    "imageUrl": "https://placehold.co/600x400/000000/FFFFFF/png"
+  },
+  {
+    "id": "prod_002",
+    "title": "Кожаные туфли классика",
+    "category": "shoes",
+    "rating": 4.9,
+    "reviewsCount": 89,
+    "color": "Чёрный",
+    "material": "Натуральная кожа",
+    "price": 8990.0,
+    "currency": "RUB",
+    "imageUrl": "https://placehold.co/600x400/000000/AFFFF0/png"
+  },
+  {
+    "id": "prod_003",
+    "title": "Солнцезащитные очки Lux",
+    "category": "accessories",
+    "rating": 4.5,
+    "reviewsCount": 203,
+    "color": "Чёрный глянец",
+    "material": "Поликарбонат",
+    "price": 2490.0,
+    "currency": "RUB",
+    "imageUrl": "https://placehold.co/600x400/000000/2F5FFF/png"
+  }
+]

@@ -14,8 +14,7 @@ class ProfileViewModel: ObservableObject {
     @Published var userProfile: UserProfile?
     @Published var isLoading = false
     @Published var errorMessage: String?
-
-
+    
     func loadProfile() async {
         isLoading = true
         errorMessage = nil

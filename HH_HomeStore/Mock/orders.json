@@ -7,9 +7,9 @@
     "totalAmount": 150,
     "currency": "₽",
     "itemsPreview": [
-      { "productId": "p1", "thumbUrl": "https://via.placeholder.com/60x60/FFCC00/000000?text=1" },
-      { "productId": "p2", "thumbUrl": "https://via.placeholder.com/60x60/FF6B6B/FFFFFF?text=2" },
-      { "productId": "p3", "thumbUrl": "https://via.placeholder.com/60x60/4ECDC4/FFFFFF?text=3" }
+      { "productId": "p1", "thumbUrl": "https://placehold.co/60x60/000000/FFFFFF/png?text=1" },
+      { "productId": "p2", "thumbUrl": "https://placehold.co/60x60/000000/FFFFFF/png?text=1" },
+      { "productId": "p3", "thumbUrl": "https://placehold.co/60x60/000000/FFFFFF/png?text=1" }
     ]
   },
   {

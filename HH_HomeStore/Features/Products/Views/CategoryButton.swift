@@ -33,7 +33,10 @@ struct CategoryButton: View {
 }
 
 #Preview {
-    CategoryButton(title: "Furniture", isSelected: true) {
-        print("Category tapped")
+    HStack(spacing: 20) {
+        CategoryButton(title: "Furniture", isSelected: true) {}
+        CategoryButton(title: "Decor", isSelected: false) {}
     }
+    .padding()
+
 }

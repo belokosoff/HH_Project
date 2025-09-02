@@ -1,0 +1,104 @@
+name: HH_HomeStore
+options:
+  developmentLanguage: ru
+  knownRegions: ["ru"]
+  useBaseInternationalization: false
+  enableBaseInternationalization: false
+configs:
+  Debug: debug
+  Internal: release
+  Release: release
+settings:
+  base:
+    VERSIONING_SYSTEM: apple-generic
+    CURRENT_PROJECT_VERSION: 1
+    SWIFT_VERSION: 5.8
+    CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER: YES
+    CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED: YES
+    OTHER_LDFLAGS: 
+      - -Objc
+    ENABLE_BITCODE: NO
+  configs:
+    Debug:
+      OTHER_SWIFT_FLAGS: -D DEBUG
+    Internal:
+      OTHER_SWIFT_FLAGS: -D INTERNAL
+      SWIFT_COMPILATION_MODE: wholemodule
+    Release:
+      OTHER_SWIFT_FLAGS: -D RELEASE
+      SWIFT_COMPILATION_MODE: wholemodule
+targets:
+  HH_HomeStore:
+    type: application
+    platform: iOS
+    deploymentTarget: 18.5
+    scheme:
+    dependencies:
+      - package: KeychainAccess
+      - package: Netfox
+        product: netfox
+      - package: Factory
+    sources:
+      - path: HH_HomeStore
+    prebuildScripts:
+      # SwiftGen
+      - script: |
+          if ! command -v swiftgen &> /dev/null; then
+            echo "❌ Error: swiftgen not found. Install with: brew install swiftgen"
+            exit 1
+          fi
+          swiftgen config run --config swiftgen.yml
+        name: SwiftGen
+        basedOnDependencyAnalysis: false
+
+      # SwiftFormat
+      - script: |
+          if [ "${FASTLANE_SCAN}" != "Running" ]; then
+            if [ "${CONFIGURATION}" == "Debug" ]; then
+              if ! command -v swiftformat &> /dev/null; then
+                echo "❌ Error: swiftformat not found. Install with: brew install swiftformat"
+                exit 1
+              fi
+              swiftformat --config .swiftformat --quiet --conflictmarkers ignore HH_HomeStore
+            fi
+          fi
+        name: SwiftFormat
+        basedOnDependencyAnalysis: false
+
+    attributes:
+      ProvisioningStyle: Manual
+    settings:
+      base:
+        SDKROOT: iphoneos
+        SUPPORTED_PLATFORMS: iphoneos iphonesimulator
+        TARGETED_DEVICE_FAMILY: "1"
+        PRODUCT_BUNDLE_IDENTIFIER: ru.example.HH-HomeStore
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_CFBundleName: $(PRODUCT_NAME)
+        INFOPLIST_KEY_CFBundleDisplayName: HH HomeStore
+        INFOPLIST_KEY_CFBundleVersion: $(CURRENT_PROJECT_VERSION)
+        INFOPLIST_KEY_CFBundleShortVersionString: $(MARKETING_VERSION)
+packages:
+# Local
+
+    # CoreAssembly:
+    #     path: Packages/Core/CoreAssembly
+    # CoreStorage:
+    #     path: Packages/Core/CoreStorage
+    # CoreNavigation:
+    #     path: Packages/Core/CoreNavigation
+    # CoreNetworking:
+    #     path: Packages/Core/CoreNetworking
+    # CoreServices:
+    #     path: Packages/Core/CoreServices
+
+# External
+    Netfox:
+        url: https://github.com/kasketis/netfox
+        from: 1.20.0
+    KeychainAccess:
+        url: https://github.com/kishikawakatsumi/KeychainAccess
+        from: 4.2.2
+    Factory:
+        url: https://github.com/hmlongco/Factory
+        from: 2.2.0

@@ -8,8 +8,13 @@ import Foundation
 
 struct Cart: Codable, Identifiable {
     var id = UUID()
+    
     var items: [CartItem]
     var totalItems: Int
     var subtotal: Double
     var currency: String
+    
+    enum CodingKeys: String, CodingKey {
+        case items, totalItems, subtotal, currency
+    }
 }

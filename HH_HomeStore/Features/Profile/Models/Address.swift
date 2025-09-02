@@ -5,7 +5,7 @@
 //  Created by Maxim Belokosov on 18.08.2025.
 //
 
-struct Address: Codable {
+struct Address: Codable, Hashable {
     let city : String
     let street : String
     let postcode : String

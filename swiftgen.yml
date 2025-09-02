@@ -1,0 +1,14 @@
+input_dir: HH_HomeStore/Resources
+output_dir: HH_HomeStore/Classes/Generated
+xcassets:
+    inputs: Assets.xcassets
+    outputs:
+        templateName: swift5
+        output: Assets.swift
+        params:
+            enumName: Assets
+strings:
+    inputs: Localizable.strings
+    outputs:
+        templateName: structured-swift5
+        output: Strings.swift

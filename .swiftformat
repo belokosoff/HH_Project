@@ -1,0 +1,9 @@
+--swiftversion 5.8
+--header "Created by Maxim Belokosov.\n//"
+--maxwidth 140
+--varattributes same-line
+--wraparguments before-first
+--wrapcollections before-first
+--wrapternary before-operators
+--enable isEmpty,organizeDeclarations,markTypes,blankLinesAroundMark,anyObjectProtocol,wrapConditionalBodies
+--exclude HH_HomeStore/Classes/Generated

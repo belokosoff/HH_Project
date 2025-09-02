@@ -10,8 +10,7 @@ struct CustomTabView: View {
 
     var body: some View {
         TabView(selection: $selection) {
-            // Вкладка "Главная"
-            HomeView()
+            ProductsView(viewModel: ProductsViewModel())
                 .tag(0)
                 .tabItem {
                     Image(selection == 0 ? "home_active" : "home")
@@ -27,7 +26,7 @@ struct CustomTabView: View {
                 }
 
             // Вкладка "Корзина"
-            CartScreenView()
+            CartScreenView(vm : CartViewModel())
                 .tag(2)
                 .tabItem {
                     Image(selection == 2 ? "cart_active" : "cart")
