@@ -3,6 +3,7 @@
 
 // MARK: - ProfileViewModel.swift
 
+import Factory
 import Foundation
 
 @MainActor
@@ -12,6 +13,8 @@ class ProfileViewModel: ObservableObject {
     @Published var userProfile: UserProfile?
     @Published var isLoading = false
     @Published var errorMessage: String?
+
+    @Injected(\.appState) var appState
 
     func loadProfile() async {
         isLoading = true
@@ -24,6 +27,8 @@ class ProfileViewModel: ObservableObject {
             errorMessage = "Ошибка загрузки профиля: \(error.localizedDescription)"
         }
     }
+
+    func logout() {}
 
     // MARK: Private
 

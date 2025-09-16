@@ -1,16 +1,18 @@
 // Created by Maxim Belokosov.
 //
 
+// AuthViewModel.swift
+import Factory
 import Foundation
 
 final class AuthViewModel: ObservableObject {
+    // MARK: Internal
+
     @Published var username: String = ""
     @Published var password: String = ""
 
     @Published var usernameError: String?
     @Published var passwordError: String?
-
-    @Published var isLoggedIn: Bool = false
 
     var isFormValid: Bool {
         usernameError == nil && passwordError == nil && !username.isEmpty && !password.isEmpty
@@ -31,6 +33,10 @@ final class AuthViewModel: ObservableObject {
         guard isFormValid else {
             return
         }
-        isLoggedIn = true
+        appState[\.isAuthorized] = true
     }
+
+    // MARK: Private
+
+    @Injected(\.appState) private var appState
 }

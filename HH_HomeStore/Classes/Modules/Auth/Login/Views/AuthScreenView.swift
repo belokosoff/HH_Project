@@ -6,6 +6,8 @@ import SwiftUI
 // MARK: - AuthScreenView
 
 struct AuthScreenView: View {
+    // MARK: Internal
+
     @ObservedObject var vm = AuthViewModel()
 
     var body: some View {
@@ -30,7 +32,9 @@ struct AuthScreenView: View {
                         vm.login()
                     }
 
-                    NavigationLink(value: Route.forgetpassword) {
+                    Button(action: {
+                        isPresented.toggle()
+                    }) {
                         Text("Забыли пароль?")
                             .font(.system(size: 14))
                             .foregroundColor(.gray)
@@ -42,19 +46,14 @@ struct AuthScreenView: View {
             }
         }
         .navigationBarBackButtonHidden(true)
-        .navigationDestination(for: Route.self) { route in
-            switch route {
-            case .forgetpassword:
-                ForgetPasswordView(viewModel: ForgetPasswordViewModel())
-            }
+        .sheet(isPresented: $isPresented) {
+            ForgetPasswordView(viewModel: ForgetPasswordViewModel())
         }
     }
-}
 
-// MARK: - Route
+    // MARK: Private
 
-enum Route {
-    case forgetpassword
+    @State private var isPresented: Bool = false
 }
 
 #Preview {
