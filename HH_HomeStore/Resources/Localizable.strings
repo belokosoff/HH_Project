@@ -1,0 +1,23 @@
+"auth.title" = "Авторизация";
+"auth.email" = "E-mail";
+"auth.password" = "Пароль";
+"auth.action" = "Войти";
+
+"registration.title" = "Авторизация";
+"registration.name" = "E-mail";
+"registration.action" = "Зарегистрироваться";
+
+"forgetpassword.title" = "Авторизация";
+"forgetpassword.name" = "Электронная почта";
+
+"registration.name" = "E-mail";
+"registration.action" = "Зарегистрироваться";
+
+"profile.title" = "Профиль";
+"profile.logout" = "Выйти";
+"profile.logout.action" = "Выйти";
+
+
+"placeholder.noConnection" = "Нет соединения";
+"placeholder.unknown" = "Что-то пошло не так";
+"placeholder.refresh" = "Обновить";

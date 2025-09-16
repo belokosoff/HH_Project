@@ -31,42 +31,21 @@ targets:
   HH_HomeStore:
     type: application
     platform: iOS
-    deploymentTarget: 18.5
+    deploymentTarget: 18.6
     scheme:
-    dependencies:
-      - package: KeychainAccess
-      - package: Netfox
-        product: netfox
-      - package: Factory
     sources:
       - path: HH_HomeStore
     prebuildScripts:
-      # SwiftGen
       - script: |
-          if ! command -v swiftgen &> /dev/null; then
-            echo "❌ Error: swiftgen not found. Install with: brew install swiftgen"
-            exit 1
-          fi
-          swiftgen config run --config swiftgen.yml
-        name: SwiftGen
-        basedOnDependencyAnalysis: false
-
-      # SwiftFormat
-      - script: |
-          if [ "${FASTLANE_SCAN}" != "Running" ]; then
-            if [ "${CONFIGURATION}" == "Debug" ]; then
-              if ! command -v swiftformat &> /dev/null; then
-                echo "❌ Error: swiftformat not found. Install with: brew install swiftformat"
-                exit 1
+            if [ "${FASTLANE_SCAN}" != "Running" ]; then
+              if [ "${CONFIGURATION}" == "Debug" ]; then
+                export PATH="$PATH:/opt/homebrew/bin"
+                if which mint >/dev/null; then
+                  mint run swiftformat swiftformat HH_HomeStore --quiet --conflictmarkers ignore
+                fi
               fi
-              swiftformat --config .swiftformat --quiet --conflictmarkers ignore HH_HomeStore
             fi
-          fi
         name: SwiftFormat
-        basedOnDependencyAnalysis: false
-
-    attributes:
-      ProvisioningStyle: Manual
     settings:
       base:
         SDKROOT: iphoneos
@@ -74,10 +53,12 @@ targets:
         TARGETED_DEVICE_FAMILY: "1"
         PRODUCT_BUNDLE_IDENTIFIER: ru.example.HH-HomeStore
         GENERATE_INFOPLIST_FILE: YES
-        INFOPLIST_KEY_CFBundleName: $(PRODUCT_NAME)
-        INFOPLIST_KEY_CFBundleDisplayName: HH HomeStore
-        INFOPLIST_KEY_CFBundleVersion: $(CURRENT_PROJECT_VERSION)
-        INFOPLIST_KEY_CFBundleShortVersionString: $(MARKETING_VERSION)
+        INFOPLIST_KEY_UILaunchStoryboardName: LaunchScreen
+        INFOPLIST_KEY_UIRequiresFullScreen: YES
+    dependencies:
+      - package: Factory
+        product: Factory
+
 packages:
 # Local
 

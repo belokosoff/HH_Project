@@ -1,18 +1,19 @@
-//
-//  HH_HomeStoreApp.swift
-//  HH_HomeStore
-//
-//  Created by Maxim Belokosov on 17.08.2025.
+// Created by Maxim Belokosov.
 //
 
 import SwiftUI
 
 @main
 struct HH_HomeStoreApp: App {
-    @State private var isAuthorized : Bool = false
+    private let composition = AppComposition()
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(composition)
         }
     }
+
+    // MARK: Private
+
+    @State private var isAuthorized: Bool = false
 }
