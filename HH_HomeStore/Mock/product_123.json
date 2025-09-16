@@ -1,0 +1,42 @@
+{
+  "id": "123",
+  "title": "Платье с цветочным принтом",
+  "price": 2500,
+  "currency": "RUB",
+  "gallery": [
+    "https://example.com/dress1.jpg",
+    "https://example.com/dress2.jpg"
+  ],
+  "options": {
+    "colors": [
+      { "id": "c1", "name": "Белый", "hex": "#FFFFFF" },
+      { "id": "c2", "name": "Чёрный", "hex": "#000000" }
+    ],
+    "sizes": ["S", "M", "L"]
+  },
+  "variants": [],
+  "selected": { "color": "Чёрный", "size": "M" },
+  "description": "Элегантное платье с цветочным принтом...",
+  "specs": [
+    { "name": "Материал", "value": "Хлопок 100%" },
+    { "name": "Узор", "value": "Цветочный" }
+  ],
+  "shipping": {
+    "delivery": "Бесплатная доставка по РФ",
+    "returns": "Возврат в течение 14 дней"
+  },
+  "reviewsSummary": {
+    "rating": 4.8,
+    "total": 24,
+    "breakdown": { "5": 20, "4": 4 }
+  },
+  "topReview": {
+    "id": "r1",
+    "author": { "name": "Chloe M.", "avatarUrl": "https://i.pravatar.cc/150?img=1" },
+    "rating": 5,
+    "createdAt": "2025-07-01T10:00:00Z",
+    "text": "Отличное платье!",
+    "likes": 12,
+    "dislikes": 1
+  }
+}

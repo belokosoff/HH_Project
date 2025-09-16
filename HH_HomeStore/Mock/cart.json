@@ -2,32 +2,45 @@
   "items": [
     {
       "itemId": "item-1",
-      "productId": "prod-100",
+      "productId": "p1",
       "title": "Шелковая блузка",
       "variant": {
         "size": "S",
         "color": "Белый"
       },
-      "price": 7280,
+      "price": 7280.0,
       "currency": "RUB",
       "quantity": 1,
       "imageUrl": "https://via.placeholder.com/100"
     },
     {
       "itemId": "item-2",
-      "productId": "prod-200",
-      "title": "Джинсы",
+      "productId": "p2",
+      "title": "Джинсы с высокой талией",
       "variant": {
         "size": "M",
         "color": "Синий"
       },
-      "price": 5990,
+      "price": 5990.0,
       "currency": "RUB",
       "quantity": 2,
-      "imageUrl": "https://via.placeholder.com/100"
+      "imageUrl": "https://via.placeholder.com/100/blue"
+    },
+    {
+      "itemId": "item-3",
+      "productId": "p3",
+      "title": "Летнее платье",
+      "variant": {
+        "size": "L",
+        "color": "Красный"
+      },
+      "price": 8500.0,
+      "currency": "RUB",
+      "quantity": 1,
+      "imageUrl": "https://via.placeholder.com/100/red"
     }
   ],
-  "totalItems": 3,
-  "subtotal": 19260,
+  "totalItems": 4,
+  "subtotal": 27760.0,
   "currency": "RUB"
 }

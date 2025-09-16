@@ -1,17 +1,18 @@
-//  ContentView.swift
-//  HH_HomeStore
-//  Created by Maxim Belokosov on 17.08.2025.
+// Created by Maxim Belokosov.
+//
 
 import SwiftUI
 
 struct ContentView: View {
-    @State private var selectedTab: Int = 0
+    @EnvironmentObject var composition: AppComposition
 
     var body: some View {
-        CustomTabView()
+        CustomTabView(productsVM: ProductsViewModel(), cartVM: CartViewModel(ordersVM: OrdersViewModel()), profileVM: ProfileViewModel())
     }
 }
 
 #Preview {
-    ContentView()
+    let composition = AppComposition()
+    return ContentView()
+        .environmentObject(composition)
 }
