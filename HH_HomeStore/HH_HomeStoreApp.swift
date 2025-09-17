@@ -1,19 +1,44 @@
 // Created by Maxim Belokosov.
 //
 
+// HH_HomeStoreApp.swift
+import Combine
+import Factory
 import SwiftUI
+
+// MARK: - HH_HomeStoreApp
 
 @main
 struct HH_HomeStoreApp: App {
-    private let composition = AppComposition()
+    @State private var currentRoute: RouteAuth = .login
+    private var cancellable: AnyCancellable?
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .environmentObject(composition)
+            ZStack {
+                switch currentRoute {
+                case .login:
+                    NavigationStack {
+                        AuthScreenView()
+                    }
+                case .main:
+                    NavigationStack {
+                        ContentView()
+                    }
+                }
+            }
+            .onReceive(appState.published.receive(on: DispatchQueue.main)) { state in
+                currentRoute = state.isAuthorized ? .main : .login
+            }
         }
     }
 
-    // MARK: Private
+    @Injected(\.appState) var appState
+}
 
-    @State private var isAuthorized: Bool = false
+// MARK: - RouteAuth
+
+enum RouteAuth: Hashable {
+    case login
+    case main
 }

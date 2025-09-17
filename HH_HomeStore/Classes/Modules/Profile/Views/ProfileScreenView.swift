@@ -1,16 +1,7 @@
 // Created by Maxim Belokosov.
 //
 
-//
-//  ProfileScreenView.swift
-//  HH_HomeStore
-//
-//  Created by Maxim Belokosov on 26.08.2025.
-//
-import SwiftUI
-
-// MARK: - ProfileScreenView.swift
-
+import Factory
 import SwiftUI
 
 struct ProfileScreenView: View {
@@ -25,6 +16,8 @@ struct ProfileScreenView: View {
     // MARK: Internal
 
     @ObservedObject var viewModel: ProfileViewModel
+
+    @Injected(\.appState) var appState
 
     var body: some View {
         NavigationStack {
@@ -74,7 +67,7 @@ struct ProfileScreenView: View {
                     ButtonAtProfile(
                         title: "Выйти",
                         image: "back",
-                        destination: Text("Logout")
+                        destination: LogoutView()
                     )
                 }
                 .padding(.top, 30)

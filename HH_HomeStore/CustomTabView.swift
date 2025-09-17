@@ -45,6 +45,7 @@ struct CustomTabView: View {
         }
         .tint(.orange)
         .environmentObject(cartVM)
+        .padding(10)
     }
 
     // MARK: Private
